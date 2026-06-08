@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" role="img" aria-label="PGA Championship">
+  <rect width="120" height="40" rx="6" fill="#1a2f6e"/>
+  <text x="60" y="15" font-family="Georgia, serif" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold" letter-spacing="2">PGA</text>
+  <line x1="14" y1="20" x2="106" y2="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+  <text x="60" y="31" font-family="Georgia, serif" font-size="7" fill="#c9a84c" text-anchor="middle" letter-spacing="1.2">CHAMPIONSHIP</text>
+</svg>

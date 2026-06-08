@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" role="img" aria-label="The Open Championship">
+  <rect width="120" height="40" rx="6" fill="#0a3d1f"/>
+  <text x="60" y="14" font-family="Georgia, serif" font-size="7.5" fill="#c9a84c" text-anchor="middle" letter-spacing="2.5">THE</text>
+  <text x="60" y="27.5" font-family="Georgia, serif" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold" letter-spacing="0.5">OPEN</text>
+  <text x="60" y="38" font-family="Georgia, serif" font-size="5.5" fill="#8dc99a" text-anchor="middle" letter-spacing="2">CHAMPIONSHIP</text>
+</svg>

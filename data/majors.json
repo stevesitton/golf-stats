@@ -1,0 +1,267 @@
+{
+  "tournaments": {
+    "masters": {
+      "name": "The Masters",
+      "shortName": "Masters",
+      "fixedVenue": "Augusta National GC",
+      "fixedLocation": "Augusta, Georgia",
+      "month": "April",
+      "colour": "masters"
+    },
+    "pga": {
+      "name": "PGA Championship",
+      "shortName": "PGA Champ.",
+      "month": "May",
+      "colour": "pga"
+    },
+    "usopen": {
+      "name": "US Open",
+      "shortName": "US Open",
+      "month": "June",
+      "colour": "usopen"
+    },
+    "theopen": {
+      "name": "The Open Championship",
+      "shortName": "The Open",
+      "month": "July",
+      "colour": "theopen"
+    }
+  },
+  "results": [
+    {
+      "year": 2025, "tournament": "masters",
+      "winner": "Rory McIlroy", "country": "Northern Ireland", "flag": "🇬🇧",
+      "scoreToPar": -11, "venue": "Augusta National GC", "location": "Augusta, Georgia",
+      "playoff": true
+    },
+    {
+      "year": 2025, "tournament": "pga",
+      "winner": "Scottie Scheffler", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -11, "venue": "Quail Hollow Club", "location": "Charlotte, NC"
+    },
+    {
+      "year": 2025, "tournament": "usopen",
+      "winner": "J.J. Spaun", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -1, "venue": "Oakmont Country Club", "location": "Oakmont, PA"
+    },
+    {
+      "year": 2025, "tournament": "theopen",
+      "winner": "Scottie Scheffler", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -17, "venue": "Royal Portrush GC", "location": "N. Ireland"
+    },
+    {
+      "year": 2024, "tournament": "masters",
+      "winner": "Scottie Scheffler", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -11, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2024, "tournament": "pga",
+      "winner": "Xander Schauffele", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -21, "venue": "Valhalla Golf Club", "location": "Louisville, KY"
+    },
+    {
+      "year": 2024, "tournament": "usopen",
+      "winner": "Bryson DeChambeau", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -6, "venue": "Pinehurst No. 2", "location": "Pinehurst, NC"
+    },
+    {
+      "year": 2024, "tournament": "theopen",
+      "winner": "Xander Schauffele", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -9, "venue": "Royal Troon GC", "location": "Scotland"
+    },
+    {
+      "year": 2023, "tournament": "masters",
+      "winner": "Jon Rahm", "country": "Spain", "flag": "🇪🇸",
+      "scoreToPar": -12, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2023, "tournament": "pga",
+      "winner": "Brooks Koepka", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -9, "venue": "Oak Hill Country Club", "location": "Rochester, NY"
+    },
+    {
+      "year": 2023, "tournament": "usopen",
+      "winner": "Wyndham Clark", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -10, "venue": "Los Angeles CC", "location": "Los Angeles, CA"
+    },
+    {
+      "year": 2023, "tournament": "theopen",
+      "winner": "Brian Harman", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -13, "venue": "Royal Liverpool GC (Hoylake)", "location": "England"
+    },
+    {
+      "year": 2022, "tournament": "masters",
+      "winner": "Scottie Scheffler", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -10, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2022, "tournament": "pga",
+      "winner": "Justin Thomas", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -5, "venue": "Southern Hills CC", "location": "Tulsa, OK",
+      "playoff": true
+    },
+    {
+      "year": 2022, "tournament": "usopen",
+      "winner": "Matt Fitzpatrick", "country": "England", "flag": "🇬🇧",
+      "scoreToPar": -6, "venue": "The Country Club", "location": "Brookline, MA"
+    },
+    {
+      "year": 2022, "tournament": "theopen",
+      "winner": "Cameron Smith", "country": "Australia", "flag": "🇦🇺",
+      "scoreToPar": -20, "venue": "St Andrews (Old Course)", "location": "Scotland"
+    },
+    {
+      "year": 2021, "tournament": "masters",
+      "winner": "Hideki Matsuyama", "country": "Japan", "flag": "🇯🇵",
+      "scoreToPar": -10, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2021, "tournament": "pga",
+      "winner": "Phil Mickelson", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -6, "venue": "Kiawah Island (Ocean Course)", "location": "SC"
+    },
+    {
+      "year": 2021, "tournament": "usopen",
+      "winner": "Jon Rahm", "country": "Spain", "flag": "🇪🇸",
+      "scoreToPar": -6, "venue": "Torrey Pines (South)", "location": "San Diego, CA"
+    },
+    {
+      "year": 2021, "tournament": "theopen",
+      "winner": "Collin Morikawa", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -15, "venue": "Royal St George's GC", "location": "England"
+    },
+    {
+      "year": 2020, "tournament": "masters",
+      "winner": "Dustin Johnson", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -20, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2020, "tournament": "pga",
+      "winner": "Collin Morikawa", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -13, "venue": "TPC Harding Park", "location": "San Francisco, CA"
+    },
+    {
+      "year": 2020, "tournament": "usopen",
+      "winner": "Bryson DeChambeau", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -6, "venue": "Winged Foot GC (West)", "location": "Mamaroneck, NY"
+    },
+    {
+      "year": 2020, "tournament": "theopen",
+      "cancelled": true,
+      "cancellationReason": "COVID-19 pandemic"
+    },
+    {
+      "year": 2019, "tournament": "masters",
+      "winner": "Tiger Woods", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -13, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2019, "tournament": "pga",
+      "winner": "Brooks Koepka", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -8, "venue": "Bethpage Black", "location": "Farmingdale, NY"
+    },
+    {
+      "year": 2019, "tournament": "usopen",
+      "winner": "Gary Woodland", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -13, "venue": "Pebble Beach GL", "location": "Pebble Beach, CA"
+    },
+    {
+      "year": 2019, "tournament": "theopen",
+      "winner": "Shane Lowry", "country": "Ireland", "flag": "🇮🇪",
+      "scoreToPar": -15, "venue": "Royal Portrush GC", "location": "N. Ireland"
+    },
+    {
+      "year": 2018, "tournament": "masters",
+      "winner": "Patrick Reed", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -15, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2018, "tournament": "pga",
+      "winner": "Brooks Koepka", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -16, "venue": "Bellerive Country Club", "location": "St Louis, MO"
+    },
+    {
+      "year": 2018, "tournament": "usopen",
+      "winner": "Brooks Koepka", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": 1, "venue": "Shinnecock Hills GC", "location": "Southampton, NY"
+    },
+    {
+      "year": 2018, "tournament": "theopen",
+      "winner": "Francesco Molinari", "country": "Italy", "flag": "🇮🇹",
+      "scoreToPar": -8, "venue": "Carnoustie GC", "location": "Scotland"
+    },
+    {
+      "year": 2017, "tournament": "masters",
+      "winner": "Sergio Garcia", "country": "Spain", "flag": "🇪🇸",
+      "scoreToPar": -9, "venue": "Augusta National GC", "location": "Augusta, Georgia",
+      "playoff": true
+    },
+    {
+      "year": 2017, "tournament": "pga",
+      "winner": "Justin Thomas", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -8, "venue": "Quail Hollow Club", "location": "Charlotte, NC"
+    },
+    {
+      "year": 2017, "tournament": "usopen",
+      "winner": "Brooks Koepka", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -16, "venue": "Erin Hills", "location": "Erin, WI"
+    },
+    {
+      "year": 2017, "tournament": "theopen",
+      "winner": "Jordan Spieth", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -12, "venue": "Royal Birkdale GC", "location": "England"
+    },
+    {
+      "year": 2016, "tournament": "masters",
+      "winner": "Danny Willett", "country": "England", "flag": "🇬🇧",
+      "scoreToPar": -5, "venue": "Augusta National GC", "location": "Augusta, Georgia"
+    },
+    {
+      "year": 2016, "tournament": "pga",
+      "winner": "Jimmy Walker", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -14, "venue": "Baltusrol GC (Lower)", "location": "Springfield, NJ"
+    },
+    {
+      "year": 2016, "tournament": "usopen",
+      "winner": "Dustin Johnson", "country": "USA", "flag": "🇺🇸",
+      "scoreToPar": -4, "venue": "Oakmont Country Club", "location": "Oakmont, PA"
+    },
+    {
+      "year": 2016, "tournament": "theopen",
+      "winner": "Henrik Stenson", "country": "Sweden", "flag": "🇸🇪",
+      "scoreToPar": -20, "venue": "Royal Troon GC", "location": "Scotland"
+    }
+  ],
+  "records": [
+    {
+      "title": "Tiger's Comeback",
+      "year": 2019,
+      "detail": "Tiger Woods wins The Masters — his 15th major after 11 years without a major title"
+    },
+    {
+      "title": "Phil at 50",
+      "year": 2021,
+      "detail": "Phil Mickelson wins the PGA Championship aged 50, becoming the oldest major champion in history"
+    },
+    {
+      "title": "Hideki's Historic Masters",
+      "year": 2021,
+      "detail": "Hideki Matsuyama becomes the first Japanese-born player to win The Masters Tournament"
+    },
+    {
+      "title": "DJ's Record Scorecard",
+      "year": 2020,
+      "detail": "Dustin Johnson wins The Masters at −20, the lowest ever winning score in the tournament's history"
+    },
+    {
+      "title": "Rory Completes the Slam",
+      "year": 2025,
+      "detail": "Rory McIlroy wins The Masters to complete the Career Grand Slam, joining an elite group of five players"
+    },
+    {
+      "title": "COVID Cancellation",
+      "year": 2020,
+      "detail": "The Open Championship is cancelled for the first time since World War II due to the COVID-19 pandemic"
+    }
+  ]
+}

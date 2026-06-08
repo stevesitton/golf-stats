@@ -3,977 +3,197 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
   <title>Golf Majors Statistics 2016–2025</title>
-  <style>
-    :root {
-      --green-dark:  #1a3a2a;
-      --green-mid:   #2d5e3e;
-      --green-light: #4a8c5c;
-      --gold:        #c9a84c;
-      --gold-light:  #e8c96a;
-      --cream:       #f8f5ee;
-      --text-dark:   #1a1a1a;
-      --text-muted:  #666;
-      --border:      #ddd6c8;
-      --white:       #ffffff;
-      --masters-bg:  #fff8e7;
-      --pga-bg:      #e7eeff;
-      --usopen-bg:   #e7f5ff;
-      --open-bg:     #f0ffe7;
-    }
+  <meta name="description" content="A decade of men's golf major championship statistics — winners, scores, venues and records across The Masters, PGA Championship, US Open and The Open Championship from 2016 to 2025." />
+  <meta name="author" content="Golf Majors Stats" />
+  <link rel="canonical" href="https://stevesitton.github.io/golf-stats/" />
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://stevesitton.github.io/golf-stats/" />
+  <meta property="og:title"       content="Golf Majors Statistics 2016–2025" />
+  <meta property="og:description" content="A decade of men's golf major championship statistics — winners, scores, venues and records." />
+  <meta property="og:image"       content="https://stevesitton.github.io/golf-stats/assets/images/og-image.png" />
 
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      min-height: 100vh;
-    }
+  <!-- Twitter card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Golf Majors Statistics 2016–2025" />
+  <meta name="twitter:description" content="A decade of men's golf major championship data — winners, scores, venues and records." />
+  <meta name="twitter:image"       content="https://stevesitton.github.io/golf-stats/assets/images/og-image.png" />
 
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-light) 100%);
-      color: var(--white);
-      padding: 3rem 2rem 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    header .flag { font-size: 3rem; margin-bottom: 0.5rem; }
-    header h1 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      letter-spacing: 0.04em;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    header h1 span { color: var(--gold-light); }
-    header p {
-      margin-top: 0.6rem;
-      font-size: 1rem;
-      opacity: 0.85;
-      font-style: italic;
-    }
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
 
-    /* ── SUMMARY CARDS ── */
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .stat-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
-    .stat-card .num {
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: var(--green-mid);
-      line-height: 1;
-    }
-    .stat-card .label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
+  <!-- Web fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
 
-    /* ── TABS ── */
-    .tabs-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0;
-      margin-bottom: 0;
-    }
-    .tab-btn {
-      padding: 0.65rem 1.2rem;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-family: inherit;
-      color: var(--text-muted);
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
-      transition: color 0.15s, border-color 0.15s;
-      border-radius: 4px 4px 0 0;
-    }
-    .tab-btn:hover { color: var(--green-mid); }
-    .tab-btn.active {
-      color: var(--green-dark);
-      border-bottom-color: var(--gold);
-      font-weight: bold;
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    /* ── MAIN TABLE ── */
-    .table-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem 2rem;
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      font-size: 0.9rem;
-    }
-    thead tr { background: var(--green-dark); color: var(--white); }
-    thead th {
-      padding: 0.85rem 1rem;
-      text-align: left;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: normal;
-    }
-    thead th.center { text-align: center; }
-    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: #f4efe6; }
-    tbody td { padding: 0.8rem 1rem; vertical-align: middle; }
-    tbody td.center { text-align: center; }
-
-    .year-badge {
-      display: inline-block;
-      background: var(--green-dark);
-      color: var(--white);
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: bold;
-      letter-spacing: 0.04em;
-    }
-    .tournament-pill {
-      display: inline-block;
-      padding: 0.2rem 0.65rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-    }
-    .pill-masters   { background: #fff0b3; color: #7a5c00; border: 1px solid #e8c84a; }
-    .pill-pga       { background: #dde8ff; color: #1a3080; border: 1px solid #99aaee; }
-    .pill-usopen    { background: #ddf0ff; color: #003a6e; border: 1px solid #88bbdd; }
-    .pill-open      { background: #e0ffe0; color: #1a5c20; border: 1px solid #88cc88; }
-
-    .winner { font-weight: bold; }
-    .country { font-size: 0.78rem; color: var(--text-muted); }
-    .score {
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-    .score.under { color: #1a6e2a; }
-    .score.even  { color: var(--text-muted); }
-    .score.over  { color: #c0392b; }
-    .covid-row td { color: var(--text-muted); font-style: italic; background: #f9f9f9; }
-
-    /* ── BY TOURNAMENT VIEW ── */
-    .tournament-section { margin-bottom: 2.5rem; }
-    .tournament-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1rem 0.75rem;
-      border-radius: 10px 10px 0 0;
-      color: var(--white);
-    }
-    .tournament-header.masters-hdr { background: linear-gradient(90deg, #7a5c00, #c9a84c); }
-    .tournament-header.pga-hdr     { background: linear-gradient(90deg, #1a3080, #3a5abe); }
-    .tournament-header.usopen-hdr  { background: linear-gradient(90deg, #003a6e, #1a6eb8); }
-    .tournament-header.open-hdr    { background: linear-gradient(90deg, #1a5c20, #3a9e46); }
-    .tournament-header h2 { font-size: 1.15rem; margin: 0; }
-    .tournament-header .venue-note { font-size: 0.8rem; opacity: 0.85; }
-
-    /* ── LEADERS SECTION ── */
-    .leaders-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-      padding: 1.5rem 2rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .leader-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .leader-card .card-top {
-      background: var(--green-dark);
-      color: var(--white);
-      padding: 0.85rem 1rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .leader-card .card-body { padding: 1rem; }
-    .leader-entry {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.45rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .leader-entry:last-child { border-bottom: none; }
-    .leader-name { font-weight: bold; font-size: 0.9rem; }
-    .leader-count {
-      background: var(--gold);
-      color: var(--green-dark);
-      padding: 0.15rem 0.55rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: bold;
-    }
-    .leader-detail { font-size: 0.75rem; color: var(--text-muted); }
-
-    /* ── SCORES CHART ── */
-    .scores-note {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-      padding: 0 2rem 0.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-    footer a { color: var(--green-mid); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .summary { padding: 1rem; }
-      .table-wrapper { padding: 1rem; }
-      .tabs-wrapper { padding: 0 1rem; }
-      thead th, tbody td { padding: 0.6rem 0.5rem; font-size: 0.8rem; }
-    }
-  </style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
 
-<header>
-  <div class="flag">⛳</div>
-  <h1>Golf Majors <span>Statistics</span></h1>
-  <p>A decade of men's major championships — 2016 to 2025</p>
-</header>
+  <!-- ── Header ─────────────────────────────────────────────── -->
+  <header class="hero" role="banner">
+    <span class="hero__icon" aria-hidden="true">⛳</span>
+    <h1 class="hero__title">Golf Majors <em>Statistics</em></h1>
+    <p class="hero__subtitle">A decade of men's major championships — 2016 to 2025</p>
+  </header>
 
-<!-- ── SUMMARY STATS ── -->
-<div class="summary">
-  <div class="stat-card">
-    <div class="num">39</div>
-    <div class="label">Majors Played</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">28</div>
-    <div class="label">Different Winners</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">5</div>
-    <div class="label">Brooks Koepka Wins</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">4</div>
-    <div class="label">Scottie Scheffler Wins</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">−20</div>
-    <div class="label">Best Winning Score (DJ 2020 / C. Smith 2022)</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">+1</div>
-    <div class="label">Highest Winning Score (Koepka 2018 US Open)</div>
-  </div>
-  <div class="stat-card">
-    <div class="num">1</div>
-    <div class="label">Major Cancelled (2020 Open – COVID)</div>
-  </div>
-</div>
+  <main>
 
-<!-- ── TABS ── -->
-<div class="tabs-wrapper">
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('all')">All Results</button>
-    <button class="tab-btn" onclick="showTab('bymajor')">By Major</button>
-    <button class="tab-btn" onclick="showTab('leaders')">Leaderboard</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     TAB 1 — ALL RESULTS
-══════════════════════════════════════════ -->
-<div id="tab-all" class="tab-panel active">
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Major</th>
-          <th>Winner</th>
-          <th class="center">Score</th>
-          <th>Venue</th>
-          <th>Location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 2025 -->
-        <tr>
-          <td><span class="year-badge">2025</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Rory McIlroy</span><br><span class="country">🇬🇧 Northern Ireland</span></td>
-          <td class="center"><span class="score under">−11</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2025</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Scottie Scheffler</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−11</span></td>
-          <td>Quail Hollow Club</td>
-          <td>Charlotte, NC</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2025</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">J.J. Spaun</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−1</span></td>
-          <td>Oakmont Country Club</td>
-          <td>Oakmont, PA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2025</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Scottie Scheffler</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−17</span></td>
-          <td>Royal Portrush GC</td>
-          <td>N. Ireland</td>
-        </tr>
-        <!-- 2024 -->
-        <tr>
-          <td><span class="year-badge">2024</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Scottie Scheffler</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−11</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2024</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Xander Schauffele</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−21</span></td>
-          <td>Valhalla Golf Club</td>
-          <td>Louisville, KY</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2024</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Bryson DeChambeau</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−6</span></td>
-          <td>Pinehurst No. 2</td>
-          <td>Pinehurst, NC</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2024</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Xander Schauffele</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−9</span></td>
-          <td>Royal Troon GC</td>
-          <td>Scotland</td>
-        </tr>
-        <!-- 2023 -->
-        <tr>
-          <td><span class="year-badge">2023</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Jon Rahm</span><br><span class="country">🇪🇸 Spain</span></td>
-          <td class="center"><span class="score under">−12</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2023</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Brooks Koepka</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−9</span></td>
-          <td>Oak Hill Country Club</td>
-          <td>Rochester, NY</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2023</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Wyndham Clark</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−10</span></td>
-          <td>Los Angeles CC</td>
-          <td>Los Angeles, CA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2023</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Brian Harman</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−13</span></td>
-          <td>Royal Liverpool GC (Hoylake)</td>
-          <td>England</td>
-        </tr>
-        <!-- 2022 -->
-        <tr>
-          <td><span class="year-badge">2022</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Scottie Scheffler</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−10</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2022</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Justin Thomas</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−5</span></td>
-          <td>Southern Hills CC</td>
-          <td>Tulsa, OK</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2022</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Matt Fitzpatrick</span><br><span class="country">🇬🇧 England</span></td>
-          <td class="center"><span class="score under">−6</span></td>
-          <td>The Country Club</td>
-          <td>Brookline, MA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2022</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Cameron Smith</span><br><span class="country">🇦🇺 Australia</span></td>
-          <td class="center"><span class="score under">−20</span></td>
-          <td>St Andrews (Old Course)</td>
-          <td>Scotland</td>
-        </tr>
-        <!-- 2021 -->
-        <tr>
-          <td><span class="year-badge">2021</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Hideki Matsuyama</span><br><span class="country">🇯🇵 Japan</span></td>
-          <td class="center"><span class="score under">−10</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2021</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Phil Mickelson</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−6</span></td>
-          <td>Kiawah Island (Ocean Course)</td>
-          <td>Kiawah Island, SC</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2021</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Jon Rahm</span><br><span class="country">🇪🇸 Spain</span></td>
-          <td class="center"><span class="score under">−6</span></td>
-          <td>Torrey Pines (South)</td>
-          <td>San Diego, CA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2021</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Collin Morikawa</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−15</span></td>
-          <td>Royal St George's GC</td>
-          <td>England</td>
-        </tr>
-        <!-- 2020 -->
-        <tr>
-          <td><span class="year-badge">2020</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Dustin Johnson</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−20</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2020</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Collin Morikawa</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−13</span></td>
-          <td>TPC Harding Park</td>
-          <td>San Francisco, CA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2020</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Bryson DeChambeau</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−6</span></td>
-          <td>Winged Foot GC (West)</td>
-          <td>Mamaroneck, NY</td>
-        </tr>
-        <tr class="covid-row">
-          <td><span class="year-badge">2020</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td colspan="4">Cancelled — COVID-19 pandemic</td>
-        </tr>
-        <!-- 2019 -->
-        <tr>
-          <td><span class="year-badge">2019</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Tiger Woods</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−13</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2019</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Brooks Koepka</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−8</span></td>
-          <td>Bethpage Black</td>
-          <td>Farmingdale, NY</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2019</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Gary Woodland</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−13</span></td>
-          <td>Pebble Beach GL</td>
-          <td>Pebble Beach, CA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2019</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Shane Lowry</span><br><span class="country">🇮🇪 Ireland</span></td>
-          <td class="center"><span class="score under">−15</span></td>
-          <td>Royal Portrush GC</td>
-          <td>N. Ireland</td>
-        </tr>
-        <!-- 2018 -->
-        <tr>
-          <td><span class="year-badge">2018</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Patrick Reed</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−15</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2018</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Brooks Koepka</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−16</span></td>
-          <td>Bellerive Country Club</td>
-          <td>St Louis, MO</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2018</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Brooks Koepka</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score over">+1</span></td>
-          <td>Shinnecock Hills GC</td>
-          <td>Southampton, NY</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2018</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Francesco Molinari</span><br><span class="country">🇮🇹 Italy</span></td>
-          <td class="center"><span class="score under">−8</span></td>
-          <td>Carnoustie GC</td>
-          <td>Scotland</td>
-        </tr>
-        <!-- 2017 -->
-        <tr>
-          <td><span class="year-badge">2017</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Sergio Garcia</span><br><span class="country">🇪🇸 Spain</span></td>
-          <td class="center"><span class="score under">−9</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2017</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Justin Thomas</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−8</span></td>
-          <td>Quail Hollow Club</td>
-          <td>Charlotte, NC</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2017</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Brooks Koepka</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−16</span></td>
-          <td>Erin Hills</td>
-          <td>Erin, WI</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2017</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Jordan Spieth</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−12</span></td>
-          <td>Royal Birkdale GC</td>
-          <td>England</td>
-        </tr>
-        <!-- 2016 -->
-        <tr>
-          <td><span class="year-badge">2016</span></td>
-          <td><span class="tournament-pill pill-masters">The Masters</span></td>
-          <td><span class="winner">Danny Willett</span><br><span class="country">🇬🇧 England</span></td>
-          <td class="center"><span class="score under">−5</span></td>
-          <td>Augusta National GC</td>
-          <td>Augusta, Georgia</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2016</span></td>
-          <td><span class="tournament-pill pill-pga">PGA Championship</span></td>
-          <td><span class="winner">Jimmy Walker</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−14</span></td>
-          <td>Baltusrol GC (Lower)</td>
-          <td>Springfield, NJ</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2016</span></td>
-          <td><span class="tournament-pill pill-usopen">US Open</span></td>
-          <td><span class="winner">Dustin Johnson</span><br><span class="country">🇺🇸 USA</span></td>
-          <td class="center"><span class="score under">−4</span></td>
-          <td>Oakmont Country Club</td>
-          <td>Oakmont, PA</td>
-        </tr>
-        <tr>
-          <td><span class="year-badge">2016</span></td>
-          <td><span class="tournament-pill pill-open">The Open</span></td>
-          <td><span class="winner">Henrik Stenson</span><br><span class="country">🇸🇪 Sweden</span></td>
-          <td class="center"><span class="score under">−20</span></td>
-          <td>Royal Troon GC</td>
-          <td>Scotland</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     TAB 2 — BY MAJOR
-══════════════════════════════════════════ -->
-<div id="tab-bymajor" class="tab-panel">
-  <div class="table-wrapper">
-
-    <!-- THE MASTERS -->
-    <div class="tournament-section">
-      <div class="tournament-header masters-hdr">
-        <div>
-          <h2>The Masters Tournament</h2>
-          <div class="venue-note">Augusta National Golf Club · Augusta, Georgia · Par 72</div>
-        </div>
-      </div>
-      <table>
-        <thead><tr>
-          <th>Year</th><th>Winner</th><th>Country</th>
-          <th class="center">Score</th><th class="center">Total</th>
-        </tr></thead>
-        <tbody>
-          <tr><td>2025</td><td class="winner">Rory McIlroy *</td><td>Northern Ireland</td><td class="center"><span class="score under">−11</span></td><td class="center">277</td></tr>
-          <tr><td>2024</td><td class="winner">Scottie Scheffler</td><td>USA</td><td class="center"><span class="score under">−11</span></td><td class="center">277</td></tr>
-          <tr><td>2023</td><td class="winner">Jon Rahm</td><td>Spain</td><td class="center"><span class="score under">−12</span></td><td class="center">276</td></tr>
-          <tr><td>2022</td><td class="winner">Scottie Scheffler</td><td>USA</td><td class="center"><span class="score under">−10</span></td><td class="center">278</td></tr>
-          <tr><td>2021</td><td class="winner">Hideki Matsuyama</td><td>Japan</td><td class="center"><span class="score under">−10</span></td><td class="center">278</td></tr>
-          <tr><td>2020</td><td class="winner">Dustin Johnson</td><td>USA</td><td class="center"><span class="score under">−20</span></td><td class="center">268</td></tr>
-          <tr><td>2019</td><td class="winner">Tiger Woods</td><td>USA</td><td class="center"><span class="score under">−13</span></td><td class="center">275</td></tr>
-          <tr><td>2018</td><td class="winner">Patrick Reed</td><td>USA</td><td class="center"><span class="score under">−15</span></td><td class="center">273</td></tr>
-          <tr><td>2017</td><td class="winner">Sergio Garcia *</td><td>Spain</td><td class="center"><span class="score under">−9</span></td><td class="center">279</td></tr>
-          <tr><td>2016</td><td class="winner">Danny Willett</td><td>England</td><td class="center"><span class="score under">−5</span></td><td class="center">283</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size:0.75rem;color:var(--text-muted);padding:0.4rem 1rem;font-style:italic">* Won in playoff</p>
-    </div>
-
-    <!-- PGA CHAMPIONSHIP -->
-    <div class="tournament-section">
-      <div class="tournament-header pga-hdr">
-        <div>
-          <h2>PGA Championship</h2>
-          <div class="venue-note">Rotates venues · Played in May</div>
-        </div>
-      </div>
-      <table>
-        <thead><tr>
-          <th>Year</th><th>Winner</th><th>Country</th>
-          <th class="center">Score</th><th>Venue</th><th>Location</th>
-        </tr></thead>
-        <tbody>
-          <tr><td>2025</td><td class="winner">Scottie Scheffler</td><td>USA</td><td class="center"><span class="score under">−11</span></td><td>Quail Hollow Club</td><td>Charlotte, NC</td></tr>
-          <tr><td>2024</td><td class="winner">Xander Schauffele</td><td>USA</td><td class="center"><span class="score under">−21</span></td><td>Valhalla Golf Club</td><td>Louisville, KY</td></tr>
-          <tr><td>2023</td><td class="winner">Brooks Koepka</td><td>USA</td><td class="center"><span class="score under">−9</span></td><td>Oak Hill Country Club</td><td>Rochester, NY</td></tr>
-          <tr><td>2022</td><td class="winner">Justin Thomas</td><td>USA</td><td class="center"><span class="score under">−5</span></td><td>Southern Hills CC</td><td>Tulsa, OK</td></tr>
-          <tr><td>2021</td><td class="winner">Phil Mickelson</td><td>USA</td><td class="center"><span class="score under">−6</span></td><td>Kiawah Island (Ocean)</td><td>SC</td></tr>
-          <tr><td>2020</td><td class="winner">Collin Morikawa</td><td>USA</td><td class="center"><span class="score under">−13</span></td><td>TPC Harding Park</td><td>San Francisco, CA</td></tr>
-          <tr><td>2019</td><td class="winner">Brooks Koepka</td><td>USA</td><td class="center"><span class="score under">−8</span></td><td>Bethpage Black</td><td>Farmingdale, NY</td></tr>
-          <tr><td>2018</td><td class="winner">Brooks Koepka</td><td>USA</td><td class="center"><span class="score under">−16</span></td><td>Bellerive CC</td><td>St Louis, MO</td></tr>
-          <tr><td>2017</td><td class="winner">Justin Thomas</td><td>USA</td><td class="center"><span class="score under">−8</span></td><td>Quail Hollow Club</td><td>Charlotte, NC</td></tr>
-          <tr><td>2016</td><td class="winner">Jimmy Walker</td><td>USA</td><td class="center"><span class="score under">−14</span></td><td>Baltusrol GC (Lower)</td><td>Springfield, NJ</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- US OPEN -->
-    <div class="tournament-section">
-      <div class="tournament-header usopen-hdr">
-        <div>
-          <h2>US Open</h2>
-          <div class="venue-note">Rotates venues · Played in June</div>
-        </div>
-      </div>
-      <table>
-        <thead><tr>
-          <th>Year</th><th>Winner</th><th>Country</th>
-          <th class="center">Score</th><th>Venue</th><th>Location</th>
-        </tr></thead>
-        <tbody>
-          <tr><td>2025</td><td class="winner">J.J. Spaun</td><td>USA</td><td class="center"><span class="score under">−1</span></td><td>Oakmont CC</td><td>Oakmont, PA</td></tr>
-          <tr><td>2024</td><td class="winner">Bryson DeChambeau</td><td>USA</td><td class="center"><span class="score under">−6</span></td><td>Pinehurst No. 2</td><td>Pinehurst, NC</td></tr>
-          <tr><td>2023</td><td class="winner">Wyndham Clark</td><td>USA</td><td class="center"><span class="score under">−10</span></td><td>Los Angeles CC</td><td>Los Angeles, CA</td></tr>
-          <tr><td>2022</td><td class="winner">Matt Fitzpatrick</td><td>England</td><td class="center"><span class="score under">−6</span></td><td>The Country Club</td><td>Brookline, MA</td></tr>
-          <tr><td>2021</td><td class="winner">Jon Rahm</td><td>Spain</td><td class="center"><span class="score under">−6</span></td><td>Torrey Pines (South)</td><td>San Diego, CA</td></tr>
-          <tr><td>2020</td><td class="winner">Bryson DeChambeau</td><td>USA</td><td class="center"><span class="score under">−6</span></td><td>Winged Foot GC (West)</td><td>Mamaroneck, NY</td></tr>
-          <tr><td>2019</td><td class="winner">Gary Woodland</td><td>USA</td><td class="center"><span class="score under">−13</span></td><td>Pebble Beach GL</td><td>Pebble Beach, CA</td></tr>
-          <tr><td>2018</td><td class="winner">Brooks Koepka</td><td>USA</td><td class="center"><span class="score over">+1</span></td><td>Shinnecock Hills GC</td><td>Southampton, NY</td></tr>
-          <tr><td>2017</td><td class="winner">Brooks Koepka</td><td>USA</td><td class="center"><span class="score under">−16</span></td><td>Erin Hills</td><td>Erin, WI</td></tr>
-          <tr><td>2016</td><td class="winner">Dustin Johnson</td><td>USA</td><td class="center"><span class="score under">−4</span></td><td>Oakmont CC</td><td>Oakmont, PA</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- THE OPEN -->
-    <div class="tournament-section">
-      <div class="tournament-header open-hdr">
-        <div>
-          <h2>The Open Championship</h2>
-          <div class="venue-note">Rotates British links courses · Played in July</div>
-        </div>
-      </div>
-      <table>
-        <thead><tr>
-          <th>Year</th><th>Winner</th><th>Country</th>
-          <th class="center">Score</th><th>Venue</th><th>Location</th>
-        </tr></thead>
-        <tbody>
-          <tr><td>2025</td><td class="winner">Scottie Scheffler</td><td>USA</td><td class="center"><span class="score under">−17</span></td><td>Royal Portrush GC</td><td>N. Ireland</td></tr>
-          <tr><td>2024</td><td class="winner">Xander Schauffele</td><td>USA</td><td class="center"><span class="score under">−9</span></td><td>Royal Troon GC</td><td>Scotland</td></tr>
-          <tr><td>2023</td><td class="winner">Brian Harman</td><td>USA</td><td class="center"><span class="score under">−13</span></td><td>Royal Liverpool GC</td><td>England</td></tr>
-          <tr><td>2022</td><td class="winner">Cameron Smith</td><td>Australia</td><td class="center"><span class="score under">−20</span></td><td>St Andrews (Old Course)</td><td>Scotland</td></tr>
-          <tr><td>2021</td><td class="winner">Collin Morikawa</td><td>USA</td><td class="center"><span class="score under">−15</span></td><td>Royal St George's GC</td><td>England</td></tr>
-          <tr class="covid-row"><td>2020</td><td colspan="5">Not played — COVID-19 pandemic</td></tr>
-          <tr><td>2019</td><td class="winner">Shane Lowry</td><td>Ireland</td><td class="center"><span class="score under">−15</span></td><td>Royal Portrush GC</td><td>N. Ireland</td></tr>
-          <tr><td>2018</td><td class="winner">Francesco Molinari</td><td>Italy</td><td class="center"><span class="score under">−8</span></td><td>Carnoustie GC</td><td>Scotland</td></tr>
-          <tr><td>2017</td><td class="winner">Jordan Spieth</td><td>USA</td><td class="center"><span class="score under">−12</span></td><td>Royal Birkdale GC</td><td>England</td></tr>
-          <tr><td>2016</td><td class="winner">Henrik Stenson</td><td>Sweden</td><td class="center"><span class="score under">−20</span></td><td>Royal Troon GC</td><td>Scotland</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     TAB 3 — LEADERBOARD
-══════════════════════════════════════════ -->
-<div id="tab-leaders" class="tab-panel">
-  <div class="leaders-grid">
-
-    <div class="leader-card">
-      <div class="card-top">Most Majors Won (2016–2025)</div>
-      <div class="card-body">
-        <div class="leader-entry">
-          <div><div class="leader-name">Brooks Koepka</div><div class="leader-detail">US Open ×2 · PGA ×3</div></div>
-          <span class="leader-count">5</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Scottie Scheffler</div><div class="leader-detail">Masters ×2 · PGA · Open</div></div>
-          <span class="leader-count">4</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Xander Schauffele</div><div class="leader-detail">PGA · Open (both 2024)</div></div>
-          <span class="leader-count">2</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Justin Thomas</div><div class="leader-detail">PGA 2017 · PGA 2022</div></div>
-          <span class="leader-count">2</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Bryson DeChambeau</div><div class="leader-detail">US Open ×2</div></div>
-          <span class="leader-count">2</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Jon Rahm</div><div class="leader-detail">US Open · Masters</div></div>
-          <span class="leader-count">2</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Collin Morikawa</div><div class="leader-detail">PGA · Open</div></div>
-          <span class="leader-count">2</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="leader-card">
-      <div class="card-top">Wins by Country (2016–2025)</div>
-      <div class="card-body">
-        <div class="leader-entry">
-          <div><div class="leader-name">🇺🇸 United States</div><div class="leader-detail">Dominant force throughout the decade</div></div>
-          <span class="leader-count">25</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇪🇸 Spain</div><div class="leader-detail">Garcia (2017) · Rahm (2021, 2023)</div></div>
-          <span class="leader-count">3</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇬🇧 Great Britain</div><div class="leader-detail">Willett, Fitzpatrick, McIlroy</div></div>
-          <span class="leader-count">3</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇦🇺 Australia</div><div class="leader-detail">Cameron Smith (2022 Open)</div></div>
-          <span class="leader-count">1</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇯🇵 Japan</div><div class="leader-detail">Hideki Matsuyama (2021 Masters)</div></div>
-          <span class="leader-count">1</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇮🇪 Ireland</div><div class="leader-detail">Shane Lowry (2019 Open)</div></div>
-          <span class="leader-count">1</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇮🇹 Italy</div><div class="leader-detail">Francesco Molinari (2018 Open)</div></div>
-          <span class="leader-count">1</span>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">🇸🇪 Sweden</div><div class="leader-detail">Henrik Stenson (2016 Open)</div></div>
-          <span class="leader-count">1</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="leader-card">
-      <div class="card-top">Lowest Winning Scores</div>
-      <div class="card-body">
-        <div class="leader-entry">
-          <div><div class="leader-name">Dustin Johnson — −20</div><div class="leader-detail">Masters 2020 · Augusta National</div></div>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Cameron Smith — −20</div><div class="leader-detail">The Open 2022 · St Andrews</div></div>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Henrik Stenson — −20</div><div class="leader-detail">The Open 2016 · Royal Troon</div></div>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Scottie Scheffler — −17</div><div class="leader-detail">The Open 2025 · Royal Portrush</div></div>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Collin Morikawa — −15</div><div class="leader-detail">The Open 2021 · Royal St George's</div></div>
-        </div>
-        <div class="leader-entry">
-          <div><div class="leader-name">Shane Lowry — −15</div><div class="leader-detail">The Open 2019 · Royal Portrush</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="leader-card">
-      <div class="card-top">Notable Records &amp; Firsts</div>
-      <div class="card-body">
-        <div class="leader-entry">
-          <div>
-            <div class="leader-name">Tiger's Comeback — 2019</div>
-            <div class="leader-detail">Tiger Woods wins The Masters, his 15th major after 11 injury-plagued years away from major wins</div>
+    <!-- ── Summary Stats ──────────────────────────────────── -->
+    <section aria-label="Summary statistics">
+      <div class="container">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card__number" id="stat-played">—</div>
+            <div class="stat-card__label">Majors Played</div>
           </div>
-        </div>
-        <div class="leader-entry">
-          <div>
-            <div class="leader-name">Phil at 50 — 2021</div>
-            <div class="leader-detail">Phil Mickelson becomes the oldest major winner ever, winning PGA Championship aged 50</div>
+          <div class="stat-card">
+            <div class="stat-card__number" id="stat-winners">—</div>
+            <div class="stat-card__label">Different Winners</div>
           </div>
-        </div>
-        <div class="leader-entry">
-          <div>
-            <div class="leader-name">Hideki — 2021</div>
-            <div class="leader-detail">Hideki Matsuyama becomes first Japanese-born player to win The Masters</div>
+          <div class="stat-card">
+            <div class="stat-card__number" id="stat-top-wins">—</div>
+            <div class="stat-card__label">Most Wins — <span id="stat-top-name">—</span></div>
           </div>
-        </div>
-        <div class="leader-entry">
-          <div>
-            <div class="leader-name">DJ's Record — 2020</div>
-            <div class="leader-detail">Dustin Johnson wins The Masters with a then-record −20, five strokes clear of the field</div>
+          <div class="stat-card">
+            <div class="stat-card__number" id="stat-lowest">—</div>
+            <div class="stat-card__label">Best Winning Score</div>
           </div>
-        </div>
-        <div class="leader-entry">
-          <div>
-            <div class="leader-name">Rory completes Slam — 2025</div>
-            <div class="leader-detail">Rory McIlroy wins The Masters to complete the Career Grand Slam</div>
+          <div class="stat-card">
+            <div class="stat-card__number" id="stat-highest">—</div>
+            <div class="stat-card__label">Highest Winning Score</div>
           </div>
-        </div>
-        <div class="leader-entry">
-          <div>
-            <div class="leader-name">COVID Cancellation — 2020</div>
-            <div class="leader-detail">The Open Championship not held for the first time since WWII</div>
+          <div class="stat-card">
+            <div class="stat-card__number" id="stat-cancelled">—</div>
+            <div class="stat-card__label">Cancelled (COVID-19)</div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ── Tabs ───────────────────────────────────────────── -->
+    <section aria-label="Results" class="container">
+
+      <nav class="tabs__nav" role="tablist" aria-label="Results views">
+        <button class="tabs__btn"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-all"
+                data-tab="all">All Results</button>
+        <button class="tabs__btn"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-bymajor"
+                data-tab="bymajor">By Major</button>
+        <button class="tabs__btn"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-leaders"
+                data-tab="leaders">Leaderboard</button>
+      </nav>
+
+      <!-- Panel: All Results -->
+      <div id="panel-all"
+           class="tabs__panel"
+           role="tabpanel"
+           aria-labelledby="tab-all"
+           aria-hidden="false">
+        <div class="table-scroll">
+          <table class="data-table" aria-label="All major championship results 2016–2025">
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Major</th>
+                <th scope="col">Winner</th>
+                <th scope="col" class="center">Score</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Location</th>
+              </tr>
+            </thead>
+            <tbody id="all-results-body">
+              <tr><td colspan="6" class="state-loading">Loading results…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.72rem;color:var(--colour-muted);padding:0.5rem 0.25rem;font-style:italic">
+          * Won in playoff &nbsp;·&nbsp; Score shown is to par over 72 holes
+        </p>
+      </div>
+
+      <!-- Panel: By Major -->
+      <div id="panel-bymajor"
+           class="tabs__panel"
+           role="tabpanel"
+           aria-labelledby="tab-bymajor"
+           aria-hidden="true">
+        <div id="by-major-container">
+          <p class="state-loading">Loading results…</p>
+        </div>
+      </div>
+
+      <!-- Panel: Leaderboard -->
+      <div id="panel-leaders"
+           class="tabs__panel"
+           role="tabpanel"
+           aria-labelledby="tab-leaders"
+           aria-hidden="true">
+        <div class="leaders-grid">
+
+          <div class="leader-card">
+            <div class="leader-card__header">Most Majors Won (2016–2025)</div>
+            <div class="leader-card__body" id="leaderboard-most-wins">
+              <p class="state-loading">Loading…</p>
+            </div>
+          </div>
+
+          <div class="leader-card">
+            <div class="leader-card__header">Wins by Country</div>
+            <div class="leader-card__body" id="leaderboard-by-country">
+              <p class="state-loading">Loading…</p>
+            </div>
+          </div>
+
+          <div class="leader-card">
+            <div class="leader-card__header">Lowest Winning Scores</div>
+            <div class="leader-card__body" id="leaderboard-lowest-scores">
+              <p class="state-loading">Loading…</p>
+            </div>
+          </div>
+
+          <div class="leader-card">
+            <div class="leader-card__header">Notable Records &amp; Firsts</div>
+            <div class="leader-card__body" id="leaderboard-records">
+              <p class="state-loading">Loading…</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <p>Data sourced from official tournament records and verified public sources.</p>
+    <div class="footer__links">
+      <a href="https://www.masters.com" target="_blank" rel="noopener noreferrer">The Masters</a> ·
+      <a href="https://www.pgachampionship.com" target="_blank" rel="noopener noreferrer">PGA Championship</a> ·
+      <a href="https://www.usopen.com" target="_blank" rel="noopener noreferrer">US Open</a> ·
+      <a href="https://www.theopen.com" target="_blank" rel="noopener noreferrer">The Open Championship</a>
     </div>
+  </footer>
 
-  </div>
-</div>
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
 
-<footer>
-  <p>Data sourced from official tournament sites, Wikipedia, and PGA Tour records.</p>
-  <p style="margin-top:0.4rem">
-    <a href="https://www.masters.com" target="_blank" rel="noopener">The Masters</a> ·
-    <a href="https://www.pgachampionship.com" target="_blank" rel="noopener">PGA Championship</a> ·
-    <a href="https://www.usopen.com" target="_blank" rel="noopener">US Open</a> ·
-    <a href="https://www.theopen.com" target="_blank" rel="noopener">The Open Championship</a>
-  </p>
-</footer>
-
-<script>
-  function showTab(name) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    event.target.classList.add('active');
-  }
-</script>
 </body>
 </html>

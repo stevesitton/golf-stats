@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#1a3a2a"/>
+  <!-- flag pole -->
+  <line x1="13" y1="6" x2="13" y2="26" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- flag -->
+  <polygon points="13,6 22,10 13,14" fill="#c9a84c"/>
+  <!-- ground/hole -->
+  <ellipse cx="16" cy="26" rx="7" ry="2" fill="#2d5e3e"/>
+  <!-- ball -->
+  <circle cx="22" cy="25" r="2.5" fill="#ffffff"/>
+</svg>
