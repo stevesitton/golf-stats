@@ -4,7 +4,7 @@ A clean, static landing page showcasing a decade of men's golf major championshi
 
 ## Live Site
 
-> Hosted via GitHub Pages: [stevesitton.github.io/golf-stats](https://stevesitton.github.io/golf-stats)
+> Hosted on cPanel: [golf-stats.stevesitton.com](https://golf-stats.stevesitton.com)
 
 ---
 
